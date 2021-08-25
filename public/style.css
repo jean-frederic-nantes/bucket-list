@@ -1,0 +1,7 @@
+.logo {
+    filter: invert(100%) sepia(3%) saturate(0%) hue-rotate(330deg) brightness(106%) contrast(107%);
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}

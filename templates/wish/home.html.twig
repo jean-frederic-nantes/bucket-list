@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Home | {{ parent() }}{% endblock %}
+
+{% block central %}
+<h1>Bucket List</h1>
+    <ul>
+    {% for w in wishes %}
+    <li>{{ w }}</li>
+    {% endfor %}
+    </ul>
+  
+   <br><br><br>
+{% endblock %}
