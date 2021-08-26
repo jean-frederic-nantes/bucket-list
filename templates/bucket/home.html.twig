@@ -1,14 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Home | {{ parent() }}{% endblock %}
+{% block title %}
+	Home |
+	{{ parent() }}
+{% endblock %}
 
 {% block central %}
-<h1>Bucket List</h1>
-    <ul>
-    {% for w in wishes %}
-        <li>{{w.id}} {{ w.title }}  {{ w.dateCreated|date("m/d/Y H:i:s") }}</li>
-    {% endfor %}
-    </ul>
-  {#w.date|format_datetime() "#}
-   <br><br><br>
+	<h1>Bucket List</h1>
+    <div class="col-6">
+	<table class="table table-striped">
+		<tbody>
+			{% for w in wishes %}
+				<tr>
+					<td>{{ w.title }}</td>
+					<td>
+                    <a href="{{ path('detail',{id : w.id })}}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                    </td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    </div>
+	{#w.date|format_datetime() "#}
+	<br><br><br>
 {% endblock %}

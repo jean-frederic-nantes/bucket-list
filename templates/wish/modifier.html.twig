@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Ajouter | {{ parent() }}{% endblock %}
+{% block title %} Modifier | {{ parent() }}{% endblock %}
 
 {% block central %}
-<h1>Ajouter un Wish</h1>
+<h1>Modifier un Wish</h1>
 
 <div class="col-4 mb-4">
 {{ form_start(formWish)}}
 
 {{ form_widget(formWish)}}
 
-<button type="submit" class="btn btn-success">Ajouter</button>
+<button type="submit" class="btn btn-warning">Modifier</button>
 {{ form_end(formWish)}}
 </div>
   

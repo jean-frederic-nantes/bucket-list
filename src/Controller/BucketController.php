@@ -26,9 +26,9 @@ class BucketController extends AbstractController
      */
     public function detail(Wish $wish): Response
     {
-       dd($wish);
+       
         return $this->render('bucket/detail.html.twig', [
-            'wishes' => '??'
+            'wish' => $wish
         ]);
     }
     

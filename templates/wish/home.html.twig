@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Home |
+	{{ parent() }}
+{% endblock %}
+
+{% block central %}
+	<h1>Back office</h1>
+	<div class="col-6">
+		<a href="{{path('ajouter') }}" class="btn btn-success">
+			<i class="fas fa-plus"></i>
+		</a>
+		<table class="table table-striped mt-4">
+			<tbody>
+				{% for w in wishes %}
+					<tr>
+						<td>{{ w.title }}</td>
+						<td>
+							<a href="{{ path('modifier',{id : w.id })}}" class="btn btn-outline-warning">
+								<i class="fas fa-edit"></i>
+							</a>
+						</td>
+						<td>
+							<a onclick="return confirm('Supprimer :{{ w.title }} ?')" href="{{ path('delete',{id : w.id })}}" class="btn btn-danger">
+								<i class="fas fa-trash"></i>
+							</a>
+						</td>
+
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<form action="{{ path('quick_add')}}" method="post">
+			<div class="row">
+
+				<div class="col-10"><input placeholder="Ajout rapide de Wish" name="title" class="form-control"></div>
+				<div class="col-2">
+					<button type="submit" class="btn btn-success">
+						<i class="fas fa-plus"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	{#w.date|format_datetime() "#}
+	<br><br><br>
+{% endblock %}
