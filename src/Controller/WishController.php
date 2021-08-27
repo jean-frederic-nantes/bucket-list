@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Wish;
 use App\Form\WishType;
+use App\Repository\CategRepository;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,12 +53,15 @@ class WishController extends AbstractController
     /**
      * @Route("/admin/quick-add", name="quick_add")
      */
-    public function quick_add(Request $req, EntityManagerInterface  $em): Response
+    public function quick_add(Request $req, 
+        EntityManagerInterface  $em,CategRepository $repoCateg): Response
     {
         $wish = new Wish();
+        $categ = $repoCateg->find(5);
         $wish->setTitle($req->get('title'));
         $wish->setIsPublished(true);
         $wish->setDateCreated(new \DateTime());
+        $wish->setCateg($categ);
         $em->persist($wish);
         $em->flush();
         return $this->redirectToRoute('admin_home');

@@ -4,6 +4,7 @@
 
 {% block central %}
 <h1>{{ wish.title }}</h1>
+<strong>{{ wish.categ.name }}</strong>
 <h3>{{ wish.dateCreated|date('d/m/Y H:i') }}</h>  
  <p>
     {{ wish.description }}

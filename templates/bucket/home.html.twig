@@ -12,6 +12,7 @@
 		<tbody>
 			{% for w in wishes %}
 				<tr>
+					<td><strong>{{ w.categ.name }}</strong></td>
 					<td>{{ w.title }}</td>
 					<td>
                     <a href="{{ path('detail',{id : w.id })}}" class="btn btn-primary">
