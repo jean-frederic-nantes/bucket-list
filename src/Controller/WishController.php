@@ -35,6 +35,8 @@ class WishController extends AbstractController
     public function ajouter(Request $request, EntityManagerInterface  $em): Response
     {
         $wish = new Wish();
+        $user= $this->getUser();
+        $wish->setAuthor($user->getPseudo());
         $formWish = $this->createForm(WishType::class, $wish);
         $formWish->handleRequest($request); // hydrater $wish
         if ($formWish->isSubmitted()) {
@@ -42,6 +44,8 @@ class WishController extends AbstractController
             $wish->setDateCreated(new \DateTime());
             $em->persist($wish);
             $em->flush();
+            $this->addFlash('success', 'Une nouvel Idée :'.$wish->getTitle());
+            $this->addFlash('danger', 'Alert météo !');
             // a faire plus tard rediriger vers la home du BO /admin
             return $this->redirectToRoute('admin_home');
         }

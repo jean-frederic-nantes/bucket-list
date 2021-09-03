@@ -7,7 +7,20 @@
 
 {% block central %}
 	<h1>Back office</h1>
+	<p>Hello {{ app.user.pseudo}} !</p>
+
+	
 	<div class="col-8">
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}"  role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
 		<a href="{{path('ajouter') }}" class="btn btn-success">
 			<i class="fas fa-plus"></i>
 		</a>

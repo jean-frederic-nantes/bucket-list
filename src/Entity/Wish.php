@@ -43,6 +43,11 @@ class Wish
      */
     private $categ;
 
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $author;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +109,18 @@ class Wish
     public function setCateg(?Categ $categ): self
     {
         $this->categ = $categ;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?string $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
